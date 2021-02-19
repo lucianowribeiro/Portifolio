@@ -1,13 +1,12 @@
-import styled from "styled-components";
+import styled ,{ css } from "styled-components";
+import breakpointsMedia from "../../../theme/utils/breakpointsMedia";
+import Text from "../../foundation/Text";
+import PropTypes from 'prop-types';
 
 const links = [
   {
     text: "About me",
     url: "#about",
-  },
-  {
-    text: "Projects",
-    url: "#projects",
   },
   {
     text: "Contact",
@@ -17,26 +16,41 @@ const links = [
 
 const HeaderWrapper = styled.header`
   display: flex;
-  height: 10vh;
-  justify-content: center;
-  align-items: center;
+  ${breakpointsMedia({
+    xs: css`
+      justify-content: center;
+      height: 15vh;
+    `,
+    md: css`
+      justify-content: space-around;
+      height: 10vh;
+    `,
+  })}
+  align-items: center;  
+  width: 100%;
+
 `;
 HeaderWrapper.Logo = styled.img`
-  border-radius: 50%;
-  height: 80%;  
+  border-radius: ${({theme})=> theme.borderRadius};
+  height: 70%;  
 `;
 HeaderWrapper.Menu = styled.nav`
-  & > ul {
+ & ul {
     display: flex;
   }
-  & > ul > li{
+  & li{
     justify-content: center;
-    font-size: 0.9rem;
     list-style: none;
-    margin: 4px;
+    margin: 8px;
   }
-  & > ul > li> a{
+  & a{
+    color: ${({theme})=> theme.colors.primary.main.color};
+    text-underline-position: under;
+  }
+  & a:hover{
     text-decoration: none;
+    color: ${({theme})=> theme.colors.primary.main.contrast};
+    transition: ${({theme})=> theme.transition};
   }
 `;
 
@@ -49,7 +63,7 @@ export default function Header() {
           {links.map((link) => {
             return (
               <li key={link.url}>
-                <a href={link.url}>{link.text}</a>
+                <Text as="a" pattern="menuXS" variant="menuMD" href={link.url}>{link.text}</Text>
               </li>
             );
           })}
@@ -58,3 +72,12 @@ export default function Header() {
     </HeaderWrapper>
   );
 }
+HeaderWrapper.propTypes = {
+  children: PropTypes.node,
+};  
+HeaderWrapper.Logo.propTypes = {
+  src: PropTypes.string.isRequired,
+};
+HeaderWrapper.Menu.propTypes = {
+  children: PropTypes.node,
+};
