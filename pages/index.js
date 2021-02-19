@@ -9,10 +9,7 @@ export default function Home() {
   return (
       <Container>
         <Header />
-        <Capa>
-          <h1>Luciano Weber Ribeiro</h1>
-          <h2>Portifolio</h2>
-        </Capa>
+        <Capa />
         <Projects />
         <Footer />
       </Container>

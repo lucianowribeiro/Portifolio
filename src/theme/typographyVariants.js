@@ -6,7 +6,7 @@ const typographyVariants = {
     lineHeight: 1.25, // 125%
   },
   titleMD: {
-    fontSize: '24px',
+    fontSize: '3rem',
     fontWeight: '500',
     lineHeight: 1.25, // 125%
   },
@@ -17,7 +17,7 @@ const typographyVariants = {
     lineHeight: 1.25, // 125%
   },
   subTitleMD: {
-    fontSize: '24px',
+    fontSize: '30px',
     fontWeight: 'bold',
     lineHeight: 1.25, // 125%
   },
