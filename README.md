@@ -7,4 +7,11 @@ My portfolio created during the JamStack 'Alura Bootcamp to test my skills learn
 - Reactjs
 - Nextjs
 - Styled Components
+- 
+### Desktop Mode
 
+![](./desktopMode.png)
+
+### Mobile Mode
+
+![](./mobileMode.png)
