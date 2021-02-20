@@ -31,7 +31,7 @@ const HeaderWrapper = styled.header`
 
 `;
 HeaderWrapper.Logo = styled.img`
-  border-radius: ${({theme})=> theme.borderRadius};
+  border-radius: ${({theme})=> theme.borderRadius.logo};
   height: 70%;  
 `;
 HeaderWrapper.Menu = styled.nav`

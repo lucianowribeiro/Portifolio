@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types';
 
 const FooterStyle = styled.footer`
     display: flex;
@@ -19,6 +19,10 @@ FooterStyle.Icon = styled.div`
         margin-left: 12px;
         height: 60%;
     }
+    & a:hover{ 
+        transform: scale(1.2);
+        transition: transform ${({theme})=> theme.transition};
+    }
     & a img{
         height: 100%;
     }
@@ -28,10 +32,17 @@ export default function Footer(){
     return (
         <FooterStyle>
             <FooterStyle.Icon>
-                <a href="https://www.linkedin.com/in/lucianowribeiro/" target="_blank"><img src="./images/linkedin.svg"/></a>
-                <a href="https://github.com/lucianowribeiro/" target="_blank"><img src="./images/github.svg"/></a>
-                <a href="./documents/CV_front.pdf" target="_blank"><img src="./images/cv.svg"/></a>
+                <a href="https://www.linkedin.com/in/lucianowribeiro/" target="_blank"><img src="./images/linkedin.svg" alt="linkedin"/></a>
+                <a href="https://github.com/lucianowribeiro/" target="_blank"><img src="./images/github.svg" alt="github"/></a>
+                <a href="./documents/CV_front.pdf" target="_blank"><img src="./images/cv.svg" alt="cv"/></a>
             </FooterStyle.Icon>
         </FooterStyle>
     )   
 }   
+FooterStyle.propTypes = {
+    children: PropTypes.node,
+};
+FooterStyle.Icon.propTypes = {
+    children: PropTypes.node,
+};
+  

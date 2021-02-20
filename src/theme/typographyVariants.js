@@ -39,7 +39,7 @@ const typographyVariants = {
   },
   // [paragraph2]
   paragraphMD: {
-    fontSize: '14px',
+    fontSize: '1.2rem',
     fontWeight: '400',
     lineHeight: 1.25, // 125%
   },

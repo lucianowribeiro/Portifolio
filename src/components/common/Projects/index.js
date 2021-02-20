@@ -1,39 +1,40 @@
 import styled from "styled-components";
 import WrapperProjects from "./style/WrapperProjects";
-import Card from "../Card";
+import Card from "../Card"; 
+import Text from "../../foundation/Text";
 export default function Projects() {
   const projects = [
     {
-      image: "./images/projects/instalura.png",
+      image: "https://raw.githubusercontent.com/lucianowribeiro/instalura/aula9/instalura.png",
       title: "Instalura",
       text:
-        "Project done during the Alura Bootcamp JamStack using HTML | CSS | Js | React | NextJS | StyledComponents | Styled-normalize | Lodash | Prop-types",
+        "Project done during the Alura Bootcamp JamStack using React | NextJS | StyledComponents | Styled-normalize | Lodash | Prop-types",
     },
     {
-        image: "./images/projects/instalura.png",
-        title: "Instalura",
+        image: "https://raw.githubusercontent.com/lucianowribeiro/sotc-quiz/main/_docs/capa.gif",
+        title: "Sotc-quiz",
         text:
-          "Project done during the Alura Bootcamp JamStack using HTML | CSS | Js | React | NextJS | StyledComponents | Styled-normalize | Lodash | Prop-types",
+          "Create my version of AluraQuiz in Alura'Imersão React Next.js inspired in Shadow of the Colossus game ",
     },
     {
-        image: "./images/projects/instalura.png",
-        title: "Instalura",
+        image: "https://raw.githubusercontent.com/lucianowribeiro/difficulty/master/imgs/screen.gif",
+        title: "Difficulty",
         text:
-          "Project done during the Alura Bootcamp JamStack using HTML | CSS | Js | React | NextJS | StyledComponents | Styled-normalize | Lodash | Prop-types",
+          "A simple difficulty option screen using HTML | CSS | JS ",
     },
   ];
   return (
     <WrapperProjects>
       <WrapperProjects.SectionTitle>
-        <h2>My Projects</h2>
+        <Text as="h2" pattern="subTitleXS" variant="subTitleMD" >My Projects</Text>
       </WrapperProjects.SectionTitle>
       <WrapperProjects.SectionCard>
         {projects.map((project) => {
             return (
-            <Card onClick={(click)=> click = true}>
-                <Card.Title>{project.title}</Card.Title>
+            <Card key={project.image}>
+                <Card.Title><Text as="h3" pattern="subTitleXS" variant="subTitleMD">{project.title}</Text></Card.Title>
                 <Card.Image src={project.image} alt="card image" />
-                <Card.Text>{project.text}</Card.Text>
+                <Card.Text><Text as="p" pattern="paragraphXS" variant="paragraphMD">{project.text}</Text></Card.Text>
             </Card>
             )})}
        </WrapperProjects.SectionCard>

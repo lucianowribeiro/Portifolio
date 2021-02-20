@@ -112,7 +112,7 @@ const TextBase = styled.span`
   })}
 `;
 
-export default function Text({ tag, pattern, variant, children, ...props }) {
+export default function Text({ tag, pattern, variant, children ,...props}) {
   return (
     <TextBase as={tag} pattern={pattern} variant={variant} {...props}>
       {children}
