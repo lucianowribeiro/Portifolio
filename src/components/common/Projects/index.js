@@ -6,14 +6,14 @@ import Text from '../../foundation/Text';
 export default function Projects() {
   const projects = [
     {
-      url: 'https://sotc-quiz.vercel.app/',
+      url: 'https://instalura.lucianowribeiro.vercel.app/',
       image: 'https://raw.githubusercontent.com/lucianowribeiro/instalura/aula9/instalura.png',
       title: 'Instalura',
       text:
         'Project done during the Alura Bootcamp JamStack using React | NextJS | StyledComponents | Styled-normalize | Lodash | Prop-types',
     },
     {
-      url: 'https://instalura.lucianowribeiro.vercel.app/',
+      url: 'https://sotc-quiz.vercel.app/',
       image: 'https://raw.githubusercontent.com/lucianowribeiro/sotc-quiz/main/_docs/capa.gif',
       title: 'Sotc-quiz',
       text:
