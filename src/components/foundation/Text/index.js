@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import propToStyle from "../../../theme/utils/propToStyle";
-import breakpointsMedia from "../../../theme/utils/breakpointsMedia";
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
 export const TextStyleVariantsMap = {
   titleXS: css`
@@ -17,17 +17,13 @@ export const TextStyleVariantsMap = {
   `,
   subTitleXS: css`
     font-size: ${({ theme }) => theme.typographyVariants.subTitleXS.fontSize};
-    font-weight: ${({ theme }) =>
-      theme.typographyVariants.subTitleXS.fontWeight};
-    line-height: ${({ theme }) =>
-      theme.typographyVariants.subTitleXS.lineHeight};
+    font-weight: ${({ theme }) => theme.typographyVariants.subTitleXS.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.subTitleXS.lineHeight};
   `,
   subTitleMD: css`
     font-size: ${({ theme }) => theme.typographyVariants.subTitleMD.fontSize};
-    font-weight: ${({ theme }) =>
-      theme.typographyVariants.subTitleMD.fontWeight};
-    line-height: ${({ theme }) =>
-      theme.typographyVariants.subTitleMD.lineHeight};
+    font-weight: ${({ theme }) => theme.typographyVariants.subTitleMD.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.subTitleMD.lineHeight};
   `,
   menuXS: css`
     font-size: ${({ theme }) => theme.typographyVariants.menuXS.fontSize};
@@ -41,17 +37,13 @@ export const TextStyleVariantsMap = {
   `,
   paragraphXS: css`
     font-size: ${({ theme }) => theme.typographyVariants.paragraphXS.fontSize};
-    font-weight: ${({ theme }) =>
-      theme.typographyVariants.paragraphXS.fontWeight};
-    line-height: ${({ theme }) =>
-      theme.typographyVariants.paragraphXS.lineHeight};
+    font-weight: ${({ theme }) => theme.typographyVariants.paragraphXS.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.paragraphXS.lineHeight};
   `,
   paragraphMD: css`
     font-size: ${({ theme }) => theme.typographyVariants.paragraphMD.fontSize};
-    font-weight: ${({ theme }) =>
-      theme.typographyVariants.paragraphMD.fontWeight};
-    line-height: ${({ theme }) =>
-      theme.typographyVariants.paragraphMD.lineHeight};
+    font-weight: ${({ theme }) => theme.typographyVariants.paragraphMD.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.paragraphMD.lineHeight};
   `,
 };
 export const TextStylePatternMap = {
@@ -67,17 +59,13 @@ export const TextStylePatternMap = {
   `,
   subTitleXS: css`
     font-size: ${({ theme }) => theme.typographyVariants.subTitleXS.fontSize};
-    font-weight: ${({ theme }) =>
-      theme.typographyVariants.subTitleXS.fontWeight};
-    line-height: ${({ theme }) =>
-      theme.typographyVariants.subTitleXS.lineHeight};
+    font-weight: ${({ theme }) => theme.typographyVariants.subTitleXS.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.subTitleXS.lineHeight};
   `,
   subTitleMD: css`
     font-size: ${({ theme }) => theme.typographyVariants.subTitleMD.fontSize};
-    font-weight: ${({ theme }) =>
-      theme.typographyVariants.subTitleMD.fontWeight};
-    line-height: ${({ theme }) =>
-      theme.typographyVariants.subTitleMD.lineHeight};
+    font-weight: ${({ theme }) => theme.typographyVariants.subTitleMD.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.subTitleMD.lineHeight};
   `,
   menuXS: css`
     font-size: ${({ theme }) => theme.typographyVariants.menuXS.fontSize};
@@ -91,28 +79,26 @@ export const TextStylePatternMap = {
   `,
   paragraphXS: css`
     font-size: ${({ theme }) => theme.typographyVariants.paragraphXS.fontSize};
-    font-weight: ${({ theme }) =>
-      theme.typographyVariants.paragraphXS.fontWeight};
-    line-height: ${({ theme }) =>
-      theme.typographyVariants.paragraphXS.lineHeight};
+    font-weight: ${({ theme }) => theme.typographyVariants.paragraphXS.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.paragraphXS.lineHeight};
   `,
   paragraphMD: css`
     font-size: ${({ theme }) => theme.typographyVariants.paragraphMD.fontSize};
-    font-weight: ${({ theme }) =>
-      theme.typographyVariants.paragraphMD.fontWeight};
-    line-height: ${({ theme }) =>
-      theme.typographyVariants.paragraphMD.lineHeight};
+    font-weight: ${({ theme }) => theme.typographyVariants.paragraphMD.fontWeight};
+    line-height: ${({ theme }) => theme.typographyVariants.paragraphMD.lineHeight};
   `,
 };
 
 const TextBase = styled.span`
-  ${breakpointsMedia({ 
-    xs: (props) => TextStylePatternMap[props.pattern], 
+  ${breakpointsMedia({
+    xs: (props) => TextStylePatternMap[props.pattern],
     md: (props) => TextStyleVariantsMap[props.variant],
   })}
 `;
 
-export default function Text({ tag, pattern, variant, children ,...props}) {
+export default function Text({
+  tag, pattern, variant, children, ...props
+}) {
   return (
     <TextBase as={tag} pattern={pattern} variant={variant} {...props}>
       {children}
@@ -121,14 +107,14 @@ export default function Text({ tag, pattern, variant, children ,...props}) {
 }
 
 Text.propTypes = {
-  tag: PropTypes.string.isRequired,
+  tag: PropTypes.string,
   pattern: PropTypes.string,
   variant: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 
 Text.defaultProps = {
-  tag: "span",
-  pattern: ["titleXS", "subTitleXS", "menuXS", "paragraphXS"],
-  variant: ["titleMD", "subTitleMD", "menuMD", "paragraphMD"],
+  tag: ['span', 'h1', 'h2', 'h3', 'a', 'p'],
+  pattern: ['titleXS', 'subTitleXS', 'menuXS', 'paragraphXS'],
+  variant: ['titleMD', 'subTitleMD', 'menuMD', 'paragraphMD'],
 };

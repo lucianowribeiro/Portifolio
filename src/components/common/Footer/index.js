@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const FooterStyle = styled.footer`
     display: flex;
@@ -8,7 +9,7 @@ const FooterStyle = styled.footer`
     height: 8vh;
     width: 100%;
     border: 2px solid rgb(94, 144, 163,.7);
-`
+`;
 FooterStyle.Icon = styled.div`
     display: flex;
     justify-content: center;
@@ -21,28 +22,27 @@ FooterStyle.Icon = styled.div`
     }
     & a:hover{ 
         transform: scale(1.2);
-        transition: transform ${({theme})=> theme.transition};
+        transition: transform ${({ theme }) => theme.transition};
     }
     & a img{
         height: 100%;
     }
 `;
 
-export default function Footer(){
-    return (
-        <FooterStyle>
-            <FooterStyle.Icon>
-                <a href="https://www.linkedin.com/in/lucianowribeiro/" target="_blank"><img src="./images/linkedin.svg" alt="linkedin"/></a>
-                <a href="https://github.com/lucianowribeiro/" target="_blank"><img src="./images/github.svg" alt="github"/></a>
-                <a href="./documents/CV_front.pdf" target="_blank"><img src="./images/cv.svg" alt="cv"/></a>
-            </FooterStyle.Icon>
-        </FooterStyle>
-    )   
-}   
+export default function Footer() {
+  return (
+    <FooterStyle>
+      <FooterStyle.Icon>
+        <a href="https://www.linkedin.com/in/lucianowribeiro/" rel="noreferrer" target="_blank"><img src="./images/linkedin.svg" alt="linkedin" /></a>
+        <a href="https://github.com/lucianowribeiro/" rel="noreferrer" target="_blank"><img src="./images/github.svg" alt="github" /></a>
+        <a href="./documents/CV_front.pdf" rel="noreferrer" target="_blank"><img src="./images/cv.svg" alt="cv" /></a>
+      </FooterStyle.Icon>
+    </FooterStyle>
+  );
+}
 FooterStyle.propTypes = {
-    children: PropTypes.node,
+  children: PropTypes.node,
 };
 FooterStyle.Icon.propTypes = {
-    children: PropTypes.node,
+  children: PropTypes.node,
 };
-  

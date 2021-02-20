@@ -36,5 +36,5 @@ export default {
   breakpoints,
   fontFamily: "'Truculenta', sans-serif",
   borderRadius,
-  transition: "500ms ease-in-out",
+  transition: "350ms ease-in-out",
 };

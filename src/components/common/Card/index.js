@@ -1,10 +1,11 @@
-import styled, { css } from "styled-components";
-import Proptypes from "prop-types";
-import breakpointsMedia from "../../../theme/utils/breakpointsMedia";
+import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
+import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
-const Card = styled.article`
+const Card = styled.a`
   display: flex;
   flex-direction: column;
+  text-decoration: none;
   ${breakpointsMedia({
     xs: css`
       justify-content: initial;
@@ -15,7 +16,11 @@ const Card = styled.article`
     `,
   })}
   padding: 0 30px;
-  border: 4px solid ${({ theme }) => theme.colors.borders.main.color};
+  cursor: pointer;
+  &:hover{
+    box-shadow: 3px 2px 5px ${({ theme }) => theme.colors.primary.main.color};
+    transition: ${({ theme }) => theme.transition};
+  }
 `;
 Card.Image = styled.img`
   border-radius: ${({ theme }) => theme.borderRadius.card};
@@ -37,18 +42,19 @@ Card.Title = styled.div`
 `;
 Card.Text = styled.div`
   & p {
+    color: ${({ theme }) => theme.colors.primary.text.color};
     ${breakpointsMedia({
-      xs: css`
+    xs: css`
         text-align: justify;
       `,
-      md: css`
+    md: css`
         text-align: center;
       `,
-    })}
+  })}
   }
 `;
 export default Card;
 
 Card.propTypes = {
-  children: Proptypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
