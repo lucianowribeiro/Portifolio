@@ -1,34 +1,34 @@
-import typographyVariants from "./typographyVariants";
+import typographyVariants from './typographyVariants';
 
 const colors = {
   background: {
     main: {
-      color: "#fff",
+      color: '#fff',
     },
   },
   borders: {
     main: {
-      color: "rgb(94, 144, 163,.7)",
+      color: 'rgb(94, 144, 163,.7)',
     },
   },
   primary: {
     text: {
-      color: "#000",
+      color: '#000',
     },
     main: {
-      color: "#35474e",
-      contrast: "#009688",
+      color: '#35474e',
+      contrast: '#009688',
     },
   },
 };
 const breakpoints = {
   xs: 0,
-  md: 480,
+  md: 652,
   /* md: 768, */
 };
 const borderRadius = {
-  logo: "50%",
-  card: "5%",
+  logo: '50%',
+  card: '5%',
 };
 export default {
   colors,
@@ -36,5 +36,5 @@ export default {
   breakpoints,
   fontFamily: "'Truculenta', sans-serif",
   borderRadius,
-  transition: "350ms ease-in-out",
+  transition: '350ms ease-in-out',
 };
