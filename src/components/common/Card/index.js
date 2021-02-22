@@ -11,6 +11,7 @@ const Card = styled.a`
       justify-content: initial;
     `,
     md: css`
+      flex: 1 1 150px;
       justify-content: center;
       align-items: center;
     `,

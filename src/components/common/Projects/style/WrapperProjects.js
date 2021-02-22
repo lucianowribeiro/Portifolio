@@ -34,6 +34,7 @@ WrapperProjects.SectionCard = styled.section`
     md: css`
             flex-direction: row;
             justify-content: center;
+            flex-wrap: wrap;
         `,
   })}
 `;
