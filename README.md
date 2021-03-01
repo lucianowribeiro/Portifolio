@@ -7,7 +7,8 @@ My portfolio created during the JamStack 'Alura Bootcamp to test my skills learn
 - Reactjs
 - Nextjs
 - Styled Components
-- 
+- Prop-types
+- Eslint
 ### Desktop Mode
 
 ![](./desktopMode.png)
