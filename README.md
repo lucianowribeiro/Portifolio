@@ -9,6 +9,9 @@ My portfolio created during the JamStack 'Alura Bootcamp to test my skills learn
 - Styled Components
 - Prop-types
 - Eslint
+
+Icons on Linkedin,Github and Cv in a fotter made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+
 ### Desktop Mode
 
 ![](./desktopMode.png)
@@ -16,3 +19,4 @@ My portfolio created during the JamStack 'Alura Bootcamp to test my skills learn
 ### Mobile Mode
 
 ![](./mobileMode.png)
+
