@@ -17,8 +17,8 @@ Icons on Linkedin,Github and Cv in a footer made by <a href="https://www.freepik
   <h3>Desktop Mode and Mobile Mode</h3>
 </p>
 <p>
-  <img height="400" width="700" src="./desktopMode.png">
-  <img height="450" src="./mobileMode.png">
+  <img height="400" src="./desktopMode.png">
+  <img height="400" src="./mobileMode.png">
 </p>
 
 
