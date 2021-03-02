@@ -26,8 +26,8 @@ export default function Modal() {
         flexDirection="column"
         justifyContent="space-around"
         alignItems="center"
-        width={{ xs: '85%', md: '35%' }}
-        height="80%"
+        width={{ xs: '85%', md: '30%' }}
+        height={{ xs: '100%', md: '80%' }}
         backgroundColor="white"
         boxShadow="3px 2px 5px #009688"
         borderRadius="3%"

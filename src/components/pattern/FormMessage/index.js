@@ -8,12 +8,18 @@ import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
 const FormMessageWrapper = styled.section`
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 `;
 FormMessageWrapper.Title = styled.div`
+  width: 90%;
   display: flex;
   justify-content: space-between;
 `;
 FormMessageWrapper.Content = styled.div`
+  width: 90%;
   & form {
     display: flex;
     position: relative;
