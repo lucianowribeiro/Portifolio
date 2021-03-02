@@ -8,7 +8,7 @@ const FooterStyle = styled.footer`
     background-color: rgba(0, 150, 136,0.4);
     height: 8vh;
     width: 100%;
-    border: 2px solid rgb(94, 144, 163,.7);
+    border: 2px solid ${({ theme }) => theme.colors.borders.main.color};
 `;
 FooterStyle.Icon = styled.div`
     display: flex;

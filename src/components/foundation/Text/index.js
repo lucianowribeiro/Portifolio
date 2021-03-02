@@ -110,11 +110,12 @@ Text.propTypes = {
   tag: PropTypes.string,
   pattern: PropTypes.string,
   variant: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 Text.defaultProps = {
-  tag: ['span', 'h1', 'h2', 'h3', 'a', 'p'],
+  tag: ['span', 'h1', 'h2', 'h3', 'a', 'p', 'input', 'textarea'],
   pattern: ['titleXS', 'subTitleXS', 'menuXS', 'paragraphXS'],
   variant: ['titleMD', 'subTitleMD', 'menuMD', 'paragraphMD'],
+  children: null,
 };

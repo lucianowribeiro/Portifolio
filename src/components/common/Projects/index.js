@@ -30,14 +30,14 @@ export default function Projects() {
   return (
     <WrapperProjects>
       <WrapperProjects.SectionTitle>
-        <Text as="h2" pattern="subTitleXS" variant="subTitleMD">My Projects</Text>
+        <Text tag="h2" pattern="subTitleXS" variant="subTitleMD">My Projects</Text>
       </WrapperProjects.SectionTitle>
       <WrapperProjects.SectionCard>
         {projects.map((project) => (
           <Card key={project.image} href={project.url} rel="noreferrer" target="_blank">
-            <Card.Title><Text as="h3" pattern="subTitleXS" variant="subTitleMD">{project.title}</Text></Card.Title>
+            <Card.Title><Text tag="h3" pattern="subTitleXS" variant="subTitleMD">{project.title}</Text></Card.Title>
             <Card.Image src={project.image} alt="card image" />
-            <Card.Text><Text as="p" pattern="paragraphXS" variant="paragraphMD">{project.text}</Text></Card.Text>
+            <Card.Text><Text tag="p" pattern="paragraphXS" variant="paragraphMD">{project.text}</Text></Card.Text>
           </Card>
         ))}
       </WrapperProjects.SectionCard>

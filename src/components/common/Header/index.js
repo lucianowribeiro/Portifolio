@@ -63,7 +63,7 @@ export default function Header() {
         <ul>
           {links.map((link) => (
             <li key={link.url}>
-              <Text as="a" pattern="menuXS" variant="menuMD" href={link.url}>{link.text}</Text>
+              <Text tag="a" pattern="menuXS" variant="menuMD" href={link.url}>{link.text}</Text>
             </li>
           ))}
         </ul>

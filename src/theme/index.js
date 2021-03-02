@@ -8,7 +8,7 @@ const colors = {
   },
   borders: {
     main: {
-      color: 'rgb(94, 144, 163,.7)',
+      color: 'rgba(94, 144, 163,.7)',
     },
   },
   primary: {

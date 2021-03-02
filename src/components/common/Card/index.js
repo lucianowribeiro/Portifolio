@@ -20,6 +20,7 @@ const Card = styled.a`
   cursor: pointer;
   &:hover{
     box-shadow: 3px 2px 5px ${({ theme }) => theme.colors.primary.main.color};
+    border-radius: ${({ theme }) => theme.borderRadius.card};
     transition: ${({ theme }) => theme.transition};
   }
 `;
