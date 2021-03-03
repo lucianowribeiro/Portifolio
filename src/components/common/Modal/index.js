@@ -1,41 +1,50 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import styled from 'styled-components';
-import Box from '../../foundation/Box';
-import FormMessage from '../../pattern/FormMessage';
+import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ModalWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  height: 80%;
+  position: fixed;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   z-index: 100;
+  transition: .2s;
   background-color: rgba(0, 150, 136, 0.1);
+  ${({ isOpen }) => {
+    if (isOpen) {
+      return css`
+        opacity: 1;
+        pointer-events: all;
+      `;
+    }
+    return css`
+      opacity: 0;
+      pointer-events: none;
+    `;
+  }}
 `;
 
-export default function Modal() {
+export default function Modal({ isOpen, onClose, children }) {
   return (
-    <ModalWrapper>
-      <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-around"
-        alignItems="center"
-        width={{ xs: '85%', md: '30%' }}
-        height={{ xs: '100%', md: '80%' }}
-        backgroundColor="white"
-        boxShadow="3px 2px 5px #009688"
-        borderRadius="3%"
-
-      >
-        <FormMessage />
-        paranbens vc é o cara
-      </Box>
+    <ModalWrapper
+      onClick={(event) => {
+        const isSafeArea = event.target.closest('[data-modal-safe-area="true"]');
+        if (!isSafeArea) onClose();
+      }}
+      isOpen={isOpen}
+    >
+      {children({
+        'data-modal-safe-area': 'true',
+      })}
     </ModalWrapper>
   );
 }
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.func.isRequired,
+};
