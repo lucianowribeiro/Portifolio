@@ -42,10 +42,10 @@ const CapaStyle = styled.section`
 export default function Capa() {
   return (
     <CapaStyle>
-      <Text tag="h1" pattern="titleXS" variant="titleMD">
+      <Text tag="h1" mobile="titleXS" desktop="titleMD">
         Luciano Weber Ribeiro
       </Text>
-      <Text tag="h2" pattern="subTitleXS" variant="subTitleMD">
+      <Text tag="h2" mobile="subTitleXS" desktop="subTitleMD">
         Portifolio
       </Text>
     </CapaStyle>

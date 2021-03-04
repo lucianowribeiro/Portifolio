@@ -6,6 +6,7 @@ import SendIcon from './icons';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
 const ButtonWrapper = styled.button`
+  cursor: pointer;
   background-color: rgba(0, 150, 136, 0.4);
   border: none;
   padding: 0.5rem;
@@ -32,19 +33,25 @@ const ButtonWrapper = styled.button`
     color: ${({ theme }) => theme.colors.primary.main.color}; 
   }
   &:hover,&:active{
-    border: solid 1px ${({ theme }) => theme.colors.borders.main.color};
     background-color: rgba(0, 150, 136, 0.8);
     & span, & path {
       color: white;
     }
     transition: ${({ theme }) => theme.transition};
   }
+  &:disabled{
+    background-color: rgba(0,0,0,0.1);
+    & span, & path {
+      color: initial;
+    }
+    cursor: not-allowed;
+  }
 `;
 
 export default function Button({ children, onClick, disabled }) {
   return (
     <ButtonWrapper type="submit" onClick={onClick} disabled={disabled}>
-      <Text tag="span" pattern="paragraphXS" variant="paragraphMD">
+      <Text tag="span" mobile="paragraphXS" desktop="paragraphMD">
         {children}
       </Text>
       {' '}

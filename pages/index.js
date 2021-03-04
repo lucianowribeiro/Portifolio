@@ -20,7 +20,7 @@ export default function Home() {
           <ul>
             {links.map((link) => (
               <li key={link.url}>
-                <Text tag="a" pattern="menuXS" variant="menuMD" href={link.url}>
+                <Text tag="a" mobile="menuXS" desktop="menuMD" href={link.url}>
                   {link.text}
                 </Text>
               </li>
@@ -33,7 +33,7 @@ export default function Home() {
       <Projects />
       <Modal isOpen={isOpen} onClose={() => setOpen(false)}>
         {(propsModal) => (
-          <FormMessage onClose={() => setOpen(false)} propsModal={propsModal} />
+          <FormMessage isOpen={isOpen} onClose={() => setOpen(false)} propsModal={propsModal} />
         )}
       </Modal>
       <Footer />
