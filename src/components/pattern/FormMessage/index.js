@@ -129,7 +129,7 @@ export default function FormMessage({ isOpen, onClose, propsModal }) {
               setSubmissionStatus(formStatus.LOADING);
               setTimeout(() => {
                 fetch(
-                  'https://instalura-api.vercel.app/api/users',
+                  'https://contact-form-api-jamstack.herokuapp.com/message',
                   {
                     method: 'POST',
                     parameters: {
