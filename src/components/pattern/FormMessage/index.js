@@ -142,18 +142,15 @@ export default function FormMessage({ isOpen, onClose, propsModal }) {
                 )
                   .then((response) => {
                     if (response.ok) {
-                      console.log(response);
                       return response.json();
                     }
                     throw new Error('Error on submit request');
                   })
-                  .then((response) => {
+                  .then(() => {
                     setSubmissionStatus(formStatus.DONE);
-                    console.log(response);
                   })
-                  .catch((error) => {
+                  .catch(() => {
                     setSubmissionStatus(formStatus.ERROR);
-                    console.log(error);
                   });
               }, 2000);
             }}
