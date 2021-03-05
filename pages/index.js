@@ -33,7 +33,6 @@ export default function Home() {
         </Button>
       </Header>
       <Capa />
-      {console.log(isFormSubmited)}
       <Projects />
       <Modal
         isOpen={isOpen}
