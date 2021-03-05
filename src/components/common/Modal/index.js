@@ -14,15 +14,16 @@ const ModalWrapper = styled.section`
   z-index: 100;
   transition: .2s;
   background-color: rgba(0, 150, 136, 0.1);
+  & > div {
+    height: 500px;
+  }
   & > div{
     ${breakpointsMedia({
     xs: css`
         width: max(85%,280px);
-        height: max(70%,580px);
       `,
     md: css`
-        width: max(30%,320px);
-        height: max(60%,580px);
+        width: max(25%,340px);
       `,
   })}
   }
