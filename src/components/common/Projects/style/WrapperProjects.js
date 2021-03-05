@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import breakpointsMedia from '../../../../theme/utils/breakpointsMedia';
 
-const WrapperProjects = styled.div`
+const WrapperProjects = styled.section`
     display: flex;
     ${breakpointsMedia({
     xs: css`

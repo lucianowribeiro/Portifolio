@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
-export const TextStyleVariantsMap = {
+export const TextStyleDesktopMap = {
   titleXS: css`
     font-size: ${({ theme }) => theme.typographyVariants.titleXS.fontSize};
     font-weight: ${({ theme }) => theme.typographyVariants.titleXS.fontWeight};
@@ -46,7 +46,7 @@ export const TextStyleVariantsMap = {
     line-height: ${({ theme }) => theme.typographyVariants.paragraphMD.lineHeight};
   `,
 };
-export const TextStylePatternMap = {
+export const TextStyleMobileMap = {
   titleXS: css`
     font-size: ${({ theme }) => theme.typographyVariants.titleXS.fontSize};
     font-weight: ${({ theme }) => theme.typographyVariants.titleXS.fontWeight};
@@ -88,19 +88,18 @@ export const TextStylePatternMap = {
     line-height: ${({ theme }) => theme.typographyVariants.paragraphMD.lineHeight};
   `,
 };
-
 const TextBase = styled.span`
   ${breakpointsMedia({
-    xs: (props) => TextStylePatternMap[props.pattern],
-    md: (props) => TextStyleVariantsMap[props.variant],
+    xs: (props) => TextStyleMobileMap[props.mobile],
+    md: (props) => TextStyleDesktopMap[props.desktop],
   })}
 `;
 
 export default function Text({
-  tag, pattern, variant, children, ...props
+  tag, mobile, desktop, children, ...props
 }) {
   return (
-    <TextBase as={tag} pattern={pattern} variant={variant} {...props}>
+    <TextBase as={tag} mobile={mobile} desktop={desktop} {...props}>
       {children}
     </TextBase>
   );
@@ -108,13 +107,14 @@ export default function Text({
 
 Text.propTypes = {
   tag: PropTypes.string,
-  pattern: PropTypes.string,
-  variant: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  mobile: PropTypes.string,
+  desktop: PropTypes.string,
+  children: PropTypes.node,
 };
 
 Text.defaultProps = {
-  tag: ['span', 'h1', 'h2', 'h3', 'a', 'p'],
-  pattern: ['titleXS', 'subTitleXS', 'menuXS', 'paragraphXS'],
-  variant: ['titleMD', 'subTitleMD', 'menuMD', 'paragraphMD'],
+  tag: ['span', 'h1', 'h2', 'h3', 'a', 'p', 'input', 'textarea'],
+  mobile: ['titleXS', 'subTitleXS', 'menuXS', 'paragraphXS'],
+  desktop: ['titleMD', 'subTitleMD', 'menuMD', 'paragraphMD'],
+  children: null,
 };

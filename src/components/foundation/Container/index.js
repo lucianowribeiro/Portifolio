@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-const Container = styled.div`
+const Container = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,7 +8,3 @@ const Container = styled.div`
 `;
 
 export default Container;
-
-Container.propTypes = {
-  children: PropTypes.node,
-};
