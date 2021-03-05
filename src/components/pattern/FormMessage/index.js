@@ -73,9 +73,10 @@ export default function FormMessage({
   function handleChange(event) {
     const nameField = event.target.getAttribute('name');
     const valueField = event.target.value;
+    console.log(valueField);
     setUserInfo({
       ...userInfo,
-      [nameField]: [valueField],
+      [nameField]: valueField,
     });
   }
   function handleBlur(event) {
@@ -145,6 +146,8 @@ export default function FormMessage({
                   email: userInfo.email,
                   message: userInfo.message,
                 };
+                console.log(userInfo);
+                console.log(userDTO);
                 setSubmissionStatus(formStatus.LOADING);
                 setTimeout(() => {
                   fetch(
