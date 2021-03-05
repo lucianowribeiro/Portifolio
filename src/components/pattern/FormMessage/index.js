@@ -120,7 +120,6 @@ export default function FormMessage({
         <FormMessageWrapper.Title>
           <Text tag="h2" mobile="subTitleXS" desktop="subTitleMD">
             {!isFormSubmited
-              && submissionStatus === formStatus.DEFAULT
               && 'Send your message'}
             {isFormSubmited
               && submissionStatus === formStatus.LOADING
