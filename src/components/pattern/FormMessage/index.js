@@ -32,6 +32,7 @@ FormMessageWrapper.Title = styled.div`
 FormMessageWrapper.Content = styled.div`
   width: 92%;
   height: 65%;
+
   & form {
     display: flex;
     position: relative;
@@ -57,8 +58,9 @@ const formStatus = {
   ERROR: 'ERROR',
   DONE: 'DONE',
 };
-export default function FormMessage({ isOpen, onClose, propsModal }) {
-  const [isFormSubmited, setIsFormSubmited] = React.useState(false);
+export default function FormMessage({
+  isOpen, onClose, propsModal, isFormSubmited, setIsFormSubmited,
+}) {
   const [isFieldEmpty, setFieldEmpty] = React.useState(true);
   const [submissionStatus, setSubmissionStatus] = React.useState(
     formStatus.DEFAULT,
@@ -229,5 +231,7 @@ export default function FormMessage({ isOpen, onClose, propsModal }) {
 FormMessage.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  isFormSubmited: PropTypes.bool.isRequired,
+  setIsFormSubmited: PropTypes.func.isRequired,
   propsModal: PropTypes.object.isRequired,
 };

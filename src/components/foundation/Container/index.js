@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 const Container = styled.main`
     display: flex;
@@ -9,7 +8,3 @@ const Container = styled.main`
 `;
 
 export default Container;
-
-Container.propTypes = {
-  children: PropTypes.node,
-};

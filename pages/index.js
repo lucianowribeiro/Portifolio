@@ -12,6 +12,7 @@ import FormMessage from '../src/components/pattern/FormMessage';
 
 export default function Home() {
   const [isOpen, setOpen] = React.useState(false);
+  const [isFormSubmited, setIsFormSubmited] = React.useState(false);
   return (
     <Container>
       <Header>
@@ -27,13 +28,31 @@ export default function Home() {
             ))}
           </ul>
         </Header.Menu>
-        <Button type="submit" onClick={() => setOpen(true)}>Contact</Button>
+        <Button type="submit" onClick={() => setOpen(true)}>
+          Contact
+        </Button>
       </Header>
       <Capa />
+      {console.log(isFormSubmited)}
       <Projects />
-      <Modal isOpen={isOpen} onClose={() => setOpen(false)}>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => {
+          setOpen(false);
+          setTimeout(() => setIsFormSubmited(false), 1000);
+        }}
+      >
         {(propsModal) => (
-          <FormMessage isOpen={isOpen} onClose={() => setOpen(false)} propsModal={propsModal} />
+          <FormMessage
+            isOpen={isOpen}
+            onClose={() => {
+              setOpen(false);
+              setTimeout(() => setIsFormSubmited(false), 1000);
+            }}
+            propsModal={propsModal}
+            isFormSubmited={isFormSubmited}
+            setIsFormSubmited={setIsFormSubmited}
+          />
         )}
       </Modal>
       <Footer />
