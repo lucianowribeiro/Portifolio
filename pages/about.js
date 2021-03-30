@@ -32,7 +32,7 @@ export default webPageHOC(AboutScreen, {
 });
 
 export async function getStaticProps() {
-  const repositories = await fetch('https://api.github.com/users/lucianowribeiro/repos?access_token=d03ff538eff18268e538039b715e1323343ab519')
+  const repositories = await fetch('https://api.github.com/users/lucianowribeiro/repos')
     .then((resp) => resp.json())
     .finally((data) => data);
   return {
