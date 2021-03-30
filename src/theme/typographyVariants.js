@@ -22,7 +22,7 @@ const typographyVariants = {
     lineHeight: 1.25, // 125%
   },
   menuXS: {
-    fontSize: '1.2rem ',
+    fontSize: '1.15rem ',
     fontWeight: 'inherit',
     lineHeight: 1.25, // 125%
   },

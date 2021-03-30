@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
+import propToStyle from '../../../theme/utils/propToStyle';
+import Text from '../../foundation/Text';
 
-const Card = styled.a`
+const Card = styled.section`
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -11,22 +12,22 @@ const Card = styled.a`
       justify-content: initial;
     `,
     md: css`
-      flex: 1 1 150px;
+      flex: 1 1 30%;
       justify-content: center;
       align-items: center;
     `,
   })}
   padding: 0 30px;
   cursor: pointer;
-  &:hover{
+  &:hover {
     box-shadow: 3px 2px 5px ${({ theme }) => theme.colors.primary.main.color};
     border-radius: ${({ theme }) => theme.borderRadius.card};
     transition: ${({ theme }) => theme.transition};
   }
 `;
 Card.Image = styled.img`
+  ${propToStyle('order')};
   border-radius: ${({ theme }) => theme.borderRadius.card};
-
   ${breakpointsMedia({
     xs: css`
       width: 100%;
@@ -36,27 +37,20 @@ Card.Image = styled.img`
     `,
   })}
 `;
-Card.Title = styled.div`
-  & h3 {
-    text-align: center;
-    color: ${({ theme }) => theme.colors.primary.main.contrast};
-  }
+Card.Title = styled(Text)`
+  text-align: center;
+  color: ${({ theme }) => theme.colors.primary.main.contrast};
 `;
-Card.Text = styled.div`
-  & p {
-    color: ${({ theme }) => theme.colors.primary.text.color};
-    ${breakpointsMedia({
+Card.Text = styled(Text)`
+  ${propToStyle('width')};
+  color: ${({ theme }) => theme.colors.primary.text.color};
+  ${breakpointsMedia({
     xs: css`
-        text-align: justify;
-      `,
+      text-align: justify;
+    `,
     md: css`
-        text-align: center;
-      `,
+      text-align: center;
+    `,
   })}
-  }
 `;
 export default Card;
-
-Card.propTypes = {
-  children: PropTypes.node.isRequired,
-};

@@ -16,7 +16,7 @@ const ButtonWrapper = styled.button`
       &{
         width: 4rem;    
       }
-      & span {
+      & span{
         display: none;
       }
     `,
@@ -24,7 +24,7 @@ const ButtonWrapper = styled.button`
       & {
         width: 7rem;   
       }
-      & span {
+      & span{
         display: initial;
       }
     `,
@@ -34,21 +34,23 @@ const ButtonWrapper = styled.button`
   }
   &:hover,&:active{
     background-color: rgba(0, 150, 136, 0.8);
-    & span, & path {
+    & span,& path {
       color: white;
     }
     transition: ${({ theme }) => theme.transition};
   }
   &:disabled{
     background-color: rgba(0,0,0,0.1);
-    & span, & path {
+    & span ,& path {
       color: initial;
     }
     cursor: not-allowed;
   }
 `;
 
-export default function Button({ children, onClick, disabled }) {
+export default function Button({
+  children, onClick, disabled,
+}) {
   return (
     <ButtonWrapper type="submit" onClick={onClick} disabled={disabled}>
       <Text tag="span" mobile="paragraphXS" desktop="paragraphMD">

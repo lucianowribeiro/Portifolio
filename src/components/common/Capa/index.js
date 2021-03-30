@@ -9,7 +9,7 @@ const CapaStyle = styled.section`
   width: 100%;
   margin-bottom: 30px;
   background-image: url("./images/4401280.jpg");
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; 
   & > h1,
   & > h2 {
     margin: 2px;
@@ -19,19 +19,19 @@ const CapaStyle = styled.section`
   }
   ${breakpointsMedia({
     xs: css`
-      height: 60vh;
+      height: 40vh;
       flex-direction: column;
       justify-content: flex-end;
       align-items: center;
       background-position: top;
-      background-size: 90%;
+      background-size: 90%; 
     `,
     md: css`
-      height: 50vh;
+      height: 40vh;
       justify-content: center;
       align-items: flex-start;
       background-position: right;
-      background-size: 65%;
+      background-size: 65%; 
       & > h1,
       & > h2 {
         margin-left: 15%;

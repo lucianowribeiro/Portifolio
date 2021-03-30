@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
-const ModalWrapper = styled.section`
+const ModalWrapper = styled.div`
   position: fixed;
   height: 100%;
   display: flex;
@@ -14,6 +14,7 @@ const ModalWrapper = styled.section`
   z-index: 100;
   transition: .2s;
   background-color: rgba(0, 150, 136, 0.1);
+  backdrop-filter: blur(5px);
   & > div {
     height: 500px;
   }

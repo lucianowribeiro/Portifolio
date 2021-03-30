@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
+import Link from '../Link';
 
 export const TextStyleDesktopMap = {
   titleXS: css`
@@ -96,8 +97,15 @@ const TextBase = styled.span`
 `;
 
 export default function Text({
-  tag, mobile, desktop, children, ...props
+  tag, mobile, desktop, children, href, ...props
 }) {
+  if (href) {
+    return (
+      <TextBase as={Link} href={href} mobile={mobile} desktop={desktop} {...props}>
+        {children}
+      </TextBase>
+    );
+  }
   return (
     <TextBase as={tag} mobile={mobile} desktop={desktop} {...props}>
       {children}
@@ -109,12 +117,14 @@ Text.propTypes = {
   tag: PropTypes.string,
   mobile: PropTypes.string,
   desktop: PropTypes.string,
+  href: PropTypes.string,
   children: PropTypes.node,
 };
 
 Text.defaultProps = {
-  tag: ['span', 'h1', 'h2', 'h3', 'a', 'p', 'input', 'textarea'],
-  mobile: ['titleXS', 'subTitleXS', 'menuXS', 'paragraphXS'],
-  desktop: ['titleMD', 'subTitleMD', 'menuMD', 'paragraphMD'],
+  tag: 'span',
+  mobile: 'paragraphXS',
+  desktop: 'paragraphMD',
+  href: '',
   children: null,
 };
