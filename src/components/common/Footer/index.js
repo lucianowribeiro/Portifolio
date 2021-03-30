@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import React from 'react';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
+import Link from '../../foundation/Link';
 
 const FooterStyle = styled.footer`
   display: flex;
@@ -41,23 +42,23 @@ export default function Footer() {
   return (
     <FooterStyle>
       <FooterStyle.Icon>
-        <a
+        <Link
           href="https://www.linkedin.com/in/lucianowribeiro/"
           rel="noreferrer"
           target="_blank"
         >
-          <img src="./images/linkedin.svg" alt="linkedin" />
-        </a>
-        <a
+          <img src="/images/linkedin.svg" alt="linkedin" />
+        </Link>
+        <Link
           href="https://github.com/lucianowribeiro/"
           rel="noreferrer"
           target="_blank"
         >
-          <img src="./images/github.svg" alt="github" />
-        </a>
-        <a href="./documents/CV_front.pdf" rel="noreferrer" target="_blank">
-          <img src="./images/cv.svg" alt="cv" />
-        </a>
+          <img src="/images/github.svg" alt="github" />
+        </Link>
+        <Link href="/documents/CV_front.pdf" rel="noreferrer" target="_blank">
+          <img src="/images/cv.svg" alt="cv" />
+        </Link>
       </FooterStyle.Icon>
     </FooterStyle>
   );

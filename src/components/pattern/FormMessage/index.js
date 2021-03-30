@@ -77,13 +77,10 @@ export default function FormMessage({
       ...userInfo,
       [nameField]: valueField,
     });
+    if (!(userInfo.name === '' || userInfo.email === '' || userInfo.message === '')) { setFieldEmpty(false); }
   }
   function handleBlur(event) {
-    if (event.target.textLength > 0) {
-      setFieldEmpty(false);
-    } else {
-      setFieldEmpty(true);
-    }
+    if (event.target.textLength <= 0) { setFieldEmpty(true); }
   }
   return (
     <motion.div /* framer motion */

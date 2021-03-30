@@ -1,53 +1,92 @@
+/* eslint-disable import/no-cycle */
+import React from 'react';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
+import Button from '../../foundation/Button';
+import Link from '../../foundation/Link';
+import Text from '../../foundation/Text';
+import { WebPageContext } from '../../wrappers/WebPage';
 
-export const links = [
+const links = [
   {
-    text: 'About me',
-    url: '#about',
-  },
-  {
-    text: 'Projects',
-    url: '#projects',
+    text: 'About',
+    url: '/about',
   },
 ];
-const Header = styled.header`
+const HeaderWrapper = styled.header`
   display: flex;
+  height: 10vh;
   ${breakpointsMedia({
     xs: css`
       justify-content: center;
-      height: 15vh;
     `,
     md: css`
       justify-content: space-around;
-      height: 10vh;
     `,
   })}
+  & a {
+    height: 70%;
+    ${breakpointsMedia({
+    xs: css`
+      width: 30%;
+    `,
+  })}
+  }
   align-items: center;
   width: 100%;
 `;
-Header.Logo = styled.img`
+HeaderWrapper.Logo = styled.img`
   border-radius: ${({ theme }) => theme.borderRadius.logo};
-  height: 70%;
+  height: 100%;
+  cursor: pointer;
 `;
-Header.Menu = styled.nav`
+HeaderWrapper.Menu = styled.nav`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  ${breakpointsMedia({
+    xs: css`
+      width: 40%;
+    `,
+    md: css`
+       width: 28%;
+    `,
+  })}
+  & button {
+    padding: 0.8rem 0;
+  }
   & ul {
     display: flex;
+    padding-inline-start: 0;
   }
   & li {
     justify-content: center;
     list-style: none;
     margin: 8px;
   }
-  & a {
-    color: ${({ theme }) => theme.colors.primary.main.color};
-    text-underline-position: under;
-  }
-  & a:hover {
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.primary.main.contrast};
-    transition: ${({ theme }) => theme.transition};
-  }
 `;
 
-export default Header;
+export default function Header() {
+  const webPage = React.useContext(WebPageContext);
+  return (
+    <HeaderWrapper>
+      <Link href="/">
+        <HeaderWrapper.Logo src="/favicon.svg" alt="luciano w ribeiro logo" />
+      </Link>
+      <HeaderWrapper.Menu>
+        <ul>
+          {links.map((link) => (
+            <li key={link.url}>
+              <Text href={link.url} mobile="menuXS" desktop="menuMD">
+                {link.text}
+              </Text>
+            </li>
+          ))}
+        </ul>
+        <Button type="submit" onClick={() => webPage.toogleModal()}>
+          Contact
+        </Button>
+      </HeaderWrapper.Menu>
+    </HeaderWrapper>
+  );
+}
