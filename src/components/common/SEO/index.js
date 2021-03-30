@@ -10,7 +10,7 @@ export default function SEO({ headTitle }) {
     : baseTitle;
 
   const description = 'Portifolio developed with love during JAMStack BootCamp `Alura ';
-  const image = './public/favicon.svg';
+  const image = '/images/printSEO.png';
   const urlBase = 'https://portifolio-lucianowribeiro.vercel.app/';
 
   return (
