@@ -18,7 +18,8 @@ export default function SEO({ headTitle }) {
       <title>{title}</title>
       <meta name="title" content={title} />
       <meta name="description" content={description} />
-
+      <meta name="robots" content="index" />
+      <meta name="AdsBot-Google" content="index" />
       {/* <!-- Open Graph / Facebook --> */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={urlBase} />
