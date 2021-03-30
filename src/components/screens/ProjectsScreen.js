@@ -16,7 +16,7 @@ export default function AboutScreen({
         <Box width={{ xs: '100%', md: '50%' }} display="flex" justifyContent="center" alignItems="center">
           <Card.Image style={{ width: '90%' }} src={image} alt="card image" />
         </Box>
-        <Box width={{ xs: '100%', md: '50%' }} display="flex" flexDirection="column" justifyContent="center" alignItems={{ xs: 'center', md: 'flex-start' }}>
+        <Box width={{ xs: '100%', md: '50%' }} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
           <Card.Text tag="p" mobile="paragraphXS" desktop="paragraphMD">
             {description}
           </Card.Text>
