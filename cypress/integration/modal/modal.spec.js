@@ -24,6 +24,12 @@ describe('/', () => {
             'https://contact-form-api-jamstack.herokuapp.com/message',
           ).as('formMessage');
           cy.wait('@formMessage').then((api) => {
+            // Verify animation
+            cy.get('.sc-jrAGrp > div')
+              .should('exist')
+              .should('have.css', 'width')
+              .and('match', /150px/);
+            cy.get('.sc-jrAGrp > div > svg').should('exist');
             // Verify fields
             cy.get('form input[name="name"]').should('not.exist');
             cy.get('form input[name="email"]').should('not.exist');
@@ -34,12 +40,6 @@ describe('/', () => {
             expect(api.response.body.name).to.equal('someuser');
             expect(api.response.body.email).to.equal('someemail@mail.com');
             expect(api.response.body.message).to.equal('some message here ...');
-            // Verify animation
-            cy.get('.sc-jrAGrp > div')
-              .should('exist')
-              .should('have.css', 'width')
-              .and('match', /150px/);
-            cy.get('.sc-jrAGrp > div > svg').should('exist');
           });
         });
       });
