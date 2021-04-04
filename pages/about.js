@@ -1,11 +1,9 @@
 import React from 'react';
-import AboutScreen from '../src/components/screens/AboutScreen';
+import AboutScreen from '../src/components/screens/AboutScreeen';
 import webPageHOC from '../src/components/wrappers/WebPage/hoc';
 
 function AboutPage({ repositories }) {
-  return (
-    <AboutScreen repositories={repositories} />
-  );
+  return <AboutScreen repositories={repositories} />;
 }
 AboutPage.propTypes = AboutScreen.propTypes;
 
