@@ -33,8 +33,6 @@ export async function getStaticProps() {
   const repositories = await fetch('https://api.github.com/users/lucianowribeiro/repos')
     .then((resp) => resp.json())
     .finally((data) => data);
-
-  console.log(repositories.message);
   return {
     props: {
       repositories,
