@@ -25,7 +25,7 @@ describe('/', () => {
           ).as('formMessage');
           cy.wait('@formMessage').then((api) => {
             // Verify animation
-            cy.get('.sc-jrAGrp > div > svg').should('exist');
+            cy.get('div > div').children('svg').should('exist');
             // Verify fields
             cy.get('form input[name="name"]').should('not.exist');
             cy.get('form input[name="email"]').should('not.exist');
@@ -42,3 +42,4 @@ describe('/', () => {
     });
   });
 });
+
