@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v2 # uses: usa esse plugin/extensão
       - uses: actions/setup-node@v1
         with:
-          node-version: '14.15.0'
+          node-version: '14.16.0'
       ########################################
 
       # Runs a single command using the runners shell
@@ -36,27 +36,6 @@ jobs:
       - name: Roda o linter!
         run: npm run lint
 
-  # Configuração do Lighthouse (performance)
-  lhci:
-    name: Lighthouse
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
-      
-      - name: Instala as dependências e faz o build do projeto
-        run: |
-          npm install
-          npm run build
-      
-      - name: Roda o Lighthouse CI
-        run: |
-          npm install -g @lhci/cli@0.7.x
-          lhci autorun
   # Configuração dos testes de unidade
   unit_tests:
     name: Unit Tests
@@ -66,7 +45,7 @@ jobs:
       - uses: actions/checkout@v2 ## Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/setup-node@v1
         with:
-          node-version: '14.15.0'
+          node-version: '14.16.0'
           
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -93,7 +72,7 @@ jobs:
       - uses: actions/checkout@v2 ## Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/setup-node@v1
         with:
-          node-version: '14.15.0'
+          node-version: '14.16.0'
 
       # - name: Get yarn cache directory path
       #   id: yarn-cache-dir-path
