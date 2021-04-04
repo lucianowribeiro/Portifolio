@@ -1,11 +1,9 @@
 import React from 'react';
-import AboutScreen from '../src/components/screens/AboutScreen';
+import AboutScreen from '../src/components/screens/AboutScreeen';
 import webPageHOC from '../src/components/wrappers/WebPage/hoc';
 
 function AboutPage({ repositories }) {
-  return (
-    <AboutScreen repositories={repositories} />
-  );
+  return <AboutScreen repositories={repositories} />;
 }
 AboutPage.propTypes = AboutScreen.propTypes;
 
@@ -35,6 +33,8 @@ export async function getStaticProps() {
   const repositories = await fetch('https://api.github.com/users/lucianowribeiro/repos')
     .then((resp) => resp.json())
     .finally((data) => data);
+
+  console.log(repositories.message);
   return {
     props: {
       repositories,

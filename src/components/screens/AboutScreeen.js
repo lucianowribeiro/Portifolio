@@ -36,8 +36,8 @@ export default function AboutScreen({ repositories }) {
           My repositories
         </Card.Title>
         <Box as="ul" paddingLeft="0" marginBottom="3rem">
-          {Object.values(repositories).map((repository) => (
-            <Box as="li" listStyle="none" textAlign="center" key={repository.url}>
+          {repositories && (Object.values(repositories).map((repository) => (
+            <Box as="li" key={repository.name} listStyle="none" textAlign="center">
               <Text style={{ fontWeight: 'bold' }} tag="h3" mobile="paragraphXS" desktop="paragraphMD">
                 {repository.name}
               </Text>
@@ -47,7 +47,7 @@ export default function AboutScreen({ repositories }) {
                 </Text>
               </Card.Text>
             </Box>
-          ))}
+          )))}
         </Box>
       </Box>
     </>

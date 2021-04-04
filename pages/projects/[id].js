@@ -2,6 +2,7 @@ import React from 'react';
 import ProjectsScreen from '../../src/components/screens/ProjectsScreen';
 import webPageHOC from '../../src/components/wrappers/WebPage/hoc';
 import db from '../../public/db.json';
+import projectService from '../../src/services/project';
 
 function ProjectsPage(title, link, image, description) {
   return (
@@ -13,24 +14,8 @@ ProjectsPage.propTypes = ProjectsScreen.propTypes;
 export default webPageHOC(ProjectsScreen);
 
 export async function getStaticProps({ params }) {
-  const dataPage = {
-    name: '',
-    image: '',
-    title: '',
-    description: '',
-    link: '',
-    url: '',
-  };
   const { projects } = db;
-  projects.forEach((project) => {
-    if (project.name === params.id) {
-      dataPage.name = project.name; dataPage.image = project.image;
-      dataPage.title = project.title;
-      dataPage.description = project.description;
-      dataPage.link = project.link;
-      dataPage.url = project.url;
-    }
-  });
+  const dataPage = projectService.forProjects(params, projects);
   return {
     props: {
       title: dataPage.title,
@@ -62,7 +47,7 @@ export async function getStaticProps({ params }) {
 }
 export async function getStaticPaths() {
   const { projects } = db;
-  const paths = projects.map((project) => ({ params: { id: project.name } }));
+  const paths = projectService.mapPaths(projects);
   return {
     paths,
     fallback: false,
