@@ -25,10 +25,6 @@ describe('/', () => {
           ).as('formMessage');
           cy.wait('@formMessage').then((api) => {
             // Verify animation
-            cy.get('.sc-jrAGrp > div')
-              .should('exist')
-              .should('have.css', 'width')
-              .and('match', /150px/);
             cy.get('.sc-jrAGrp > div > svg').should('exist');
             // Verify fields
             cy.get('form input[name="name"]').should('not.exist');
