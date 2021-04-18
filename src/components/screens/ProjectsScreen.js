@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import Card from '../common/Card';
 import Link from '../foundation/Link';
 import Box from '../foundation/Box';
+import Text from '../foundation/Text';
 
 export default function AboutScreen({
   title, link, image, description,
 }) {
   return (
     <>
-      <Card.Title tag="h3" mobile="subTitleXS" desktop="subTitleMD">
+      <Text tag="h3" mobile="subTitleXS" desktop="subTitleMD">
         {title}
-      </Card.Title>
+      </Text>
       <Box width="80%" display="flex" flexDirection={{ xs: 'column', md: 'row' }} alignItems={{ xs: 'center ', md: 'space-around' }}>
         <Box width={{ xs: '100%', md: '50%' }} display="flex" justifyContent="center" alignItems="center">
           <Card.Image style={{ width: '90%' }} src={image} alt="card image" />

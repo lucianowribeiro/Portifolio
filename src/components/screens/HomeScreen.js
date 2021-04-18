@@ -12,11 +12,12 @@ export default function HomeScreen({ projects }) {
   );
 }
 HomeScreen.propTypes = {
-  projects: PropTypes.arrayOf({
-    name: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-  }).isRequired,
+  projects: PropTypes.arrayOf(PropTypes.shape({
+    projectDescription: PropTypes.string.isRequired,
+    projectImage: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+    }).isRequired,
+    projectTitle: PropTypes.string.isRequired,
+    projectUrl: PropTypes.string.isRequired,
+  })).isRequired,
 };

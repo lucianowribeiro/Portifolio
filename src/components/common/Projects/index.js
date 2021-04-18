@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WrapperProjects from './style/WrapperProjects';
 import Card from '../Card';
-import Text from '../../foundation/Text';
 import Link from '../../foundation/Link';
+import Text from '../../foundation/Text';
 
 export default function Projects({ projects }) {
   return (
@@ -30,11 +30,12 @@ export default function Projects({ projects }) {
   );
 }
 Projects.propTypes = {
-  projects: PropTypes.arrayOf({
-    name: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-  }).isRequired,
+  projects: PropTypes.arrayOf(PropTypes.shape({
+    projectDescription: PropTypes.string.isRequired,
+    projectImage: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+    }).isRequired,
+    projectTitle: PropTypes.string.isRequired,
+    projectUrl: PropTypes.string.isRequired,
+  })).isRequired,
 };

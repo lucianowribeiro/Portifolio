@@ -18,18 +18,18 @@ export default function AboutScreen({
         width="80%"
       >
 
-        <Text tag="h2" mobile="subtitleXS" desktop="subtitleMD">
-          {title && title}
+        <Text tag="h2" mobile="subTitleXS" desktop="subTitleMD">
+          {title}
         </Text>
         <Card.Image
           style={{ width: '8rem' }}
-          src={image && image}
+          src={image}
           alt="logo about me"
         />
         <Card.Text tag="p" mobile="paragraphXS" desktop="paragraphMD">
-          {description && description}
+          {description}
         </Card.Text>
-        <Card.Title tag="h2" mobile="subtitleXS" desktop="subtitleMD">
+        <Card.Title tag="h2" mobile="subTitleXS" desktop="subTitleMD">
           My repositories
         </Card.Title>
         <Box as="ul" paddingLeft="0" marginBottom="3rem">
@@ -38,10 +38,8 @@ export default function AboutScreen({
               <Text style={{ fontWeight: 'bold' }} tag="h3" mobile="paragraphXS" desktop="paragraphMD">
                 {repository.name}
               </Text>
-              <Card.Text>
-                <Text href={repository.html_url} mobile="paragraphXS" desktop="paragraphMD">
-                  {repository.html_url}
-                </Text>
+              <Card.Text href={repository.html_url} mobile="paragraphXS" desktop="paragraphMD">
+                {repository.html_url}
               </Card.Text>
             </Box>
           )))}
