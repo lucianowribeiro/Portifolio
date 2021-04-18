@@ -57,7 +57,6 @@ export async function getStaticProps() {
     }
   `;
   const { aboutpage } = await CMSGraphCLient(query);
-  console.log(aboutpage);
   return {
     props: {
       title: aboutpage.aboutTitle,
