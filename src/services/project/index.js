@@ -1,27 +1,28 @@
+import CMSGraphCLient, { gql } from '../../infra/cms/CMSGraphClient';
+
 const projectService = {
-  forProjects(params, projects) {
-    const dataPage = {
-      name: '',
-      image: '',
-      title: '',
-      description: '',
-      link: '',
-      url: '',
-    };
-    projects.forEach((project) => {
-      if (project.name === params.id) {
-        dataPage.name = project.name;
-        dataPage.image = project.image;
-        dataPage.title = project.title;
-        dataPage.description = project.description;
-        dataPage.link = project.link;
-        dataPage.url = project.url;
-      }
-    });
-    return dataPage;
+  async getProjects(type, query) {
+    if (type === 'all') {
+      const projects = await CMSGraphCLient(gql`${query}`);
+      return Object.values(projects.allProjectItems);
+    } if (type === 'Item') {
+      const { projectItem } = await CMSGraphCLient(gql`${query}`);
+      return {
+        title: projectItem.projectTitle.charAt(0).toUpperCase()
+        + projectItem.projectTitle.slice(1),
+        link: projectItem.projectUrl,
+        image: projectItem.projectImage.url,
+        description: projectItem.projectDescription,
+      };
+    }
+    return new Error('A valid type is required');
   },
-  mapPaths(projects) {
-    return projects.map((project) => ({ params: { id: project.name } }));
+  async getPaths(query) {
+    const paths = await CMSGraphCLient(gql`${query}`);
+    return Object.values(paths.allProjectItems).map((project) => ({
+      params: { id: project.projectTitle },
+    }));
   },
 };
+
 export default projectService;

@@ -1,7 +1,6 @@
 import React from 'react';
 import ProjectsScreen from '../../src/components/screens/ProjectsScreen';
 import webPageHOC from '../../src/components/wrappers/WebPage/hoc';
-import db from '../../public/db.json';
 import projectService from '../../src/services/project';
 
 function ProjectsPage(title, link, image, description) {
@@ -11,43 +10,62 @@ function ProjectsPage(title, link, image, description) {
 }
 ProjectsPage.propTypes = ProjectsScreen.propTypes;
 
-export default webPageHOC(ProjectsScreen);
+export default webPageHOC(ProjectsScreen, {
+  pageProps: {
+    containerProps: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      width: '100%',
+    },
+    boxProps: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+      height: '100%',
+    },
+  },
+});
 
 export async function getStaticProps({ params }) {
-  const { projects } = db;
-  const dataPage = projectService.forProjects(params, projects);
+  const query = `
+    query{
+      projectItem(filter: {
+        projectTitle: {
+          eq: "${params.id}",
+        }
+      } ,locale: en){
+        projectTitle,
+        projectImage{
+          url,
+        },
+        projectDescription,
+        projectUrl,
+      }
+    }`;
+  const dataProjects = await projectService.getProjects('Item', query);
   return {
     props: {
-      title: dataPage.title,
-      link: dataPage.url,
-      image: dataPage.image,
-      description: dataPage.description,
+      ...dataProjects,
       pageProps: {
         seoProps: {
-          headTitle: dataPage.title,
-        },
-        containerProps: {
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          width: '100%',
-        },
-        boxProps: {
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          height: '100%',
+          headTitle: dataProjects.title,
         },
       },
-
     },
   };
-}
+};
 export async function getStaticPaths() {
-  const { projects } = db;
-  const paths = projectService.mapPaths(projects);
+  const query = `
+      query {
+        allProjectItems {
+          projectTitle
+        }
+      }
+    `;
+  const paths = await projectService.getPaths(query);
   return {
     paths,
     fallback: false,

@@ -56,7 +56,7 @@ describe('projectService', () => {
             if (param.params.id === 'name-fake') return param.params;
             return acc;
           }, {});
-          const dataPage = projectService.forProjects(
+          const dataPage = projectService.getProjects(
             params,
             projectsFakeOK,
           );
@@ -65,7 +65,7 @@ describe('projectService', () => {
       });
       describe('and fails', () => {
         test('not returning the data', () => {
-          const dataPage = projectService.forProjects(
+          const dataPage = projectService.getProjects(
             paramsFakeFails,
             projectsFakeFails,
           );
@@ -78,14 +78,14 @@ describe('projectService', () => {
     describe('when server try get the paths from db', () => {
       describe('and succeed', () => {
         test('returning the paths', () => {
-          const params = projectService.mapPaths(projectsFakeOK);
+          const params = projectService.getPaths(projectsFakeOK);
           expect(params).toEqual(paramsFakeOk);
         });
       });
       describe('and fails', () => {
         test('not returning the paths', () => {
           //
-          const params = projectService.mapPaths(projectsFakeFails);
+          const params = projectService.getPaths(projectsFakeFails);
           expect(params).not.toEqual(paramsFakeOk);
         });
       });
