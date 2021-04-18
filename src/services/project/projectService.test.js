@@ -1,92 +1,147 @@
+import { string } from 'prop-types';
 import projectService from './index';
 
-// ok
-const projectsFakeOK = [
-  {
-    name: 'name-fake',
-    image: 'image-fake',
-    title: 'title-fake',
-    description: 'description-fake',
-    link: 'link-fake',
-    url: 'url-fake',
-  },
-  {
-    name: 'meme',
-    image: 'picture',
-    title: 'head',
-    description: 'data',
-    link: 'path',
-    url: 'src',
-  },
-];
-const dataPageFakeOK = {
-  name: 'name-fake',
-  image: 'image-fake',
-  title: 'title-fake',
-  description: 'description-fake',
-  link: 'link-fake',
-  url: 'url-fake',
-};
-const paramsFakeOk = [
-  { params: { id: 'name-fake' } },
-  { params: { id: 'meme' } },
-];
-// fails
-const projectsFakeFails = [
-  {
-    meme: 'meme-fake',
-    picture: 'picture-fake',
-    head: 'head-title',
-    data: 'data',
-    path: 'path',
-    src: 'src',
-  },
-];
-const paramsFakeFails = {
-  params: { project: 'name' },
-};
-//
 describe('projectService', () => {
-  describe('forProjects()', () => {
-    describe('when server try get the projects from db', () => {
+  describe('getProjects()', () => {
+    describe('when server try get the projects from DatoCMS', () => {
       describe('and succeed', () => {
-        test('returning the data', () => {
+        test('returning the all projects', async () => {
           //
-          const params = paramsFakeOk.reduce((acc, param) => {
-            if (param.params.id === 'name-fake') return param.params;
-            return acc;
-          }, {});
-          const dataPage = projectService.forProjects(
-            params,
-            projectsFakeOK,
+          const query = `
+                query{
+                    allProjectItems(orderBy:id_ASC,locale: en){
+                      projectTitle,
+                      projectImage{
+                        url,
+                      },
+                      projectDescription,
+                      projectUrl,
+                    }
+                }`;
+          const projects = [
+            {
+              projectTitle: string,
+              projectImage: {},
+              projectDescription: string,
+              projectUrl: string,
+            },
+          ];
+          const CMSGraphCLientModule = jest.fn(async () => ({
+            allProjectItems: [
+              {
+                projectTitle: string,
+                projectImage: {},
+                projectDescription: string,
+                projectUrl: string,
+              },
+            ],
+          }));
+          const response = await projectService.getProjects(
+            'all',
+            query,
+            CMSGraphCLientModule,
           );
-          expect(dataPage).toEqual(dataPageFakeOK);
+          expect(CMSGraphCLientModule).toHaveBeenCalledWith(query);
+          expect(response).toEqual(projects);
         });
+        /* test('returning the unique project', async () => {
+          //
+          const query = `
+          query{
+            projectItem(filter: {
+              projectTitle: {
+                eq: "instalura",
+              }
+            } ,locale: en){
+              projectTitle,
+              projectImage{
+                url,
+              },
+              projectDescription,
+              projectUrl,
+            }
+          }`;
+          const projects = {
+            title: string,
+            image: {},
+            description: string,
+            link: string,
+          };
+          const CMSGraphCLientModule = jest.fn(async () => ({
+            projectItem: {
+              projectTitle: string,
+              projectImage: {},
+              projectDescription: string,
+              projectUrl: string,
+            },
+          }));
+          const response = await projectService.getProjects(
+            'Item',
+            query,
+            CMSGraphCLientModule,
+          );
+          console.log(response);
+          expect(CMSGraphCLientModule).toHaveBeenCalledWith(query);
+          expect(response).toEqual(projects);
+        }); */
       });
       describe('and fails', () => {
-        test('not returning the data', () => {
-          const dataPage = projectService.forProjects(
-            paramsFakeFails,
-            projectsFakeFails,
+        test('returning the message error', async () => {
+          const query = `
+                query{
+                }`;
+          const projects = projectService.getProjects('ERROR', query);
+          await expect(projects).resolves.toThrowError(
+            'A valid type is required',
           );
-          expect(dataPage).not.toEqual(dataPageFakeOK);
         });
       });
     });
   });
-  describe('mapPaths()', () => {
-    describe('when server try get the paths from db', () => {
+  describe('getPaths()', () => {
+    describe('when server try get the paths from DatoCMS', () => {
       describe('and succeed', () => {
-        test('returning the paths', () => {
-          const params = projectService.mapPaths(projectsFakeOK);
-          expect(params).toEqual(paramsFakeOk);
+        test('returning the paths', async () => {
+          const query = `
+                query {
+                  allProjectItems {
+                    projectTitle
+                  }
+                }`;
+          const paths = [
+            { params: { id: string } },
+            { params: { id: string } },
+            { params: { id: string } },
+          ];
+          const CMSGraphCLientModule = jest.fn(async () => ({
+            allProjectItems: [
+              { projectTitle: string },
+              { projectTitle: string },
+              { projectTitle: string },
+            ],
+          }));
+          const response = await projectService.getPaths(
+            query,
+            CMSGraphCLientModule,
+          );
+          expect(CMSGraphCLientModule).toHaveBeenCalledWith(query);
+          expect(response).toEqual(paths);
         });
       });
       describe('and fails', () => {
-        test('not returning the paths', () => {
-          //
-          const params = projectService.mapPaths(projectsFakeFails);
-          expect(params).not.toEqual(paramsFakeOk);
+        test('not returning the paths', async () => {
+          const query = `
+                query {
+                }`;
+          const CMSGraphCLientModule = jest.fn(async () => ({
+            allProjectItems: [],
+          }));
+          const reponse = await projectService.getPaths(
+            query,
+            CMSGraphCLientModule,
+          );
+          expect(CMSGraphCLientModule).toHaveBeenCalledWith(query);
+          expect(reponse).toEqual([]);
         });
       });
     });

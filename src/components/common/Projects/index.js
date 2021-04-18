@@ -1,12 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import WrapperProjects from './style/WrapperProjects';
 import Card from '../Card';
-import Text from '../../foundation/Text';
 import Link from '../../foundation/Link';
-import db from '../../../../public/db.json';
+import Text from '../../foundation/Text';
 
-export default function Projects() {
-  const { projects } = db;
+export default function Projects({ projects }) {
   return (
     <WrapperProjects>
       <WrapperProjects.SectionTitle>
@@ -16,13 +15,13 @@ export default function Projects() {
       </WrapperProjects.SectionTitle>
       <WrapperProjects.SectionCard>
         {projects.map((project) => (
-          <Card key={project.name} as={Link} href={project.link}>
+          <Card key={project.projectTitle} as={Link} href={`/projects/${project.projectTitle}`}>
             <Card.Title tag="h3" mobile="subTitleXS" desktop="subTitleMD">
-              {project.title}
+              {project.projectTitle}
             </Card.Title>
-            <Card.Image src={project.image} alt="card image" />
+            <Card.Image src={project.projectImage.url} alt="card image" />
             <Card.Text tag="p" mobile="paragraphXS" desktop="paragraphMD">
-              {project.description}
+              {project.projectDescription}
             </Card.Text>
           </Card>
         ))}
@@ -30,3 +29,13 @@ export default function Projects() {
     </WrapperProjects>
   );
 }
+Projects.propTypes = {
+  projects: PropTypes.arrayOf(PropTypes.shape({
+    projectDescription: PropTypes.string.isRequired,
+    projectImage: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+    }).isRequired,
+    projectTitle: PropTypes.string.isRequired,
+    projectUrl: PropTypes.string.isRequired,
+  })).isRequired,
+};

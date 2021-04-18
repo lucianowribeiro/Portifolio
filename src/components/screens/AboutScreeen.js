@@ -5,7 +5,9 @@ import Box from '../foundation/Box';
 import Card from '../common/Card';
 import Text from '../foundation/Text';
 
-export default function AboutScreen({ repositories }) {
+export default function AboutScreen({
+  title, image, description, repositories,
+}) {
   return (
     <>
       <Box
@@ -16,23 +18,18 @@ export default function AboutScreen({ repositories }) {
         width="80%"
       >
 
-        <Text tag="h2" mobile="subtitleXS" desktop="subtitleMD">
-          About me
+        <Text tag="h2" mobile="subTitleXS" desktop="subTitleMD">
+          {title}
         </Text>
         <Card.Image
           style={{ width: '8rem' }}
-          src="/images/logo.jpeg"
+          src={image}
           alt="logo about me"
         />
         <Card.Text tag="p" mobile="paragraphXS" desktop="paragraphMD">
-          Nostrud consectetur reprehenderit do laborum aliquip non officia duis
-          et est tempor enim fugiat fugiat. Commodo fugiat magna deserunt
-          aliquip enim mollit qui labore pariatur. Deserunt eiusmod quis tempor
-          dolore velit Lorem officia nulla deserunt elit duis aliqua
-          exercitation quis. Velit occaecat qui voluptate sit eiusmod
-          reprehenderit reprehenderit reprehenderit. Pariatur laborum cillum qui
+          {description}
         </Card.Text>
-        <Card.Title tag="h2" mobile="subtitleXS" desktop="subtitleMD">
+        <Card.Title tag="h2" mobile="subTitleXS" desktop="subTitleMD">
           My repositories
         </Card.Title>
         <Box as="ul" paddingLeft="0" marginBottom="3rem">
@@ -41,10 +38,8 @@ export default function AboutScreen({ repositories }) {
               <Text style={{ fontWeight: 'bold' }} tag="h3" mobile="paragraphXS" desktop="paragraphMD">
                 {repository.name}
               </Text>
-              <Card.Text>
-                <Text href={repository.html_url} mobile="paragraphXS" desktop="paragraphMD">
-                  {repository.html_url}
-                </Text>
+              <Card.Text href={repository.html_url} mobile="paragraphXS" desktop="paragraphMD">
+                {repository.html_url}
               </Card.Text>
             </Box>
           )))}

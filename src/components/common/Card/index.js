@@ -6,6 +6,7 @@ import Text from '../../foundation/Text';
 const Card = styled.section`
   display: flex;
   flex-direction: column;
+  text-transform: capitalize;
   text-decoration: none;
   ${breakpointsMedia({
     xs: css`
