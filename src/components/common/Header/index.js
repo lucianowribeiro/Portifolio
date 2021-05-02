@@ -6,6 +6,7 @@ import Button from '../../foundation/Button';
 import Link from '../../foundation/Link';
 import Text from '../../foundation/Text';
 import { WebPageContext } from '../../wrappers/WebPage';
+import { LightIcon, DarkIcon } from './icons';
 
 const links = [
   {
@@ -28,8 +29,8 @@ const HeaderWrapper = styled.header`
     height: 70%;
     ${breakpointsMedia({
     xs: css`
-      width: 30%;
-    `,
+        width: 30%;
+      `,
   })}
   }
   align-items: center;
@@ -42,14 +43,14 @@ HeaderWrapper.Logo = styled.img`
 `;
 HeaderWrapper.Menu = styled.nav`
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
   ${breakpointsMedia({
     xs: css`
-      width: 40%;
+      width: 50%;
     `,
     md: css`
-       width: 28%;
+      width: 40%;
     `,
   })}
   & button {
@@ -62,7 +63,10 @@ HeaderWrapper.Menu = styled.nav`
   & li {
     justify-content: center;
     list-style: none;
-    margin: 8px;
+  }
+  & svg {
+    cursor: pointer;
+    transition: ${(theme) => theme.transition};
   }
 `;
 
@@ -70,22 +74,36 @@ export default function Header() {
   const webPage = React.useContext(WebPageContext);
   return (
     <HeaderWrapper>
-      <Link href="/">
+      <Link href="/" mode={webPage.themeMode}>
         <HeaderWrapper.Logo src="/favicon.svg" alt="luciano w ribeiro logo" />
       </Link>
       <HeaderWrapper.Menu>
         <ul>
           {links.map((link) => (
             <li key={link.url}>
-              <Text href={link.url} mobile="menuXS" desktop="menuMD">
+              <Text
+                mode={webPage.themeMode}
+                href={link.url}
+                mobile="menuXS"
+                desktop="menuMD"
+              >
                 {link.text}
               </Text>
             </li>
           ))}
         </ul>
-        <Button type="submit" onClick={() => webPage.toogleModal()}>
+        <Button
+          mode={webPage.themeMode}
+          type="submit"
+          onClick={webPage.toogleModal}
+        >
           Contact
         </Button>
+        {webPage.themeMode === 'light' ? (
+          <LightIcon mode={webPage.themeMode} onClick={webPage.toggleTheme} />
+        ) : (
+          <DarkIcon mode={webPage.themeMode} onClick={webPage.toggleTheme} />
+        )}
       </HeaderWrapper.Menu>
     </HeaderWrapper>
   );

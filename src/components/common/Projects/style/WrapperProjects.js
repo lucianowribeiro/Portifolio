@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import lodash from 'lodash';
 import breakpointsMedia from '../../../../theme/utils/breakpointsMedia';
 
 const WrapperProjects = styled.section`
@@ -19,7 +20,7 @@ WrapperProjects.SectionTitle = styled.section`
   height: 6rem;
   & h2 {
     display: flex;
-    color: ${({ theme }) => theme.colors.primary.main.color};
+    color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.main.color};
     justify-content: center;
     align-items: center;
   }

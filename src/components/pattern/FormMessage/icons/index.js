@@ -2,11 +2,12 @@ import styled, { css } from 'styled-components';
 
 import { CloseCircle, Email } from '@styled-icons/evaicons-solid';
 import { UserCircle, Message } from '@styled-icons/boxicons-regular';
+import lodash from 'lodash';
 import breakpointsMedia from '../../../../theme/utils/breakpointsMedia';
 /* ---------Styled Icons--------------- */
 export const CloseIcon = styled(CloseCircle)`
   width: 30px;
-  color: ${({ theme }) => theme.colors.primary.main.color};
+  color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.main.contrast};
   align-self: flex-start;
   cursor: pointer;
 `;
@@ -23,7 +24,7 @@ export const UserIcon = styled(UserCircle)`
       right: 7% ;
     `,
   })}
-  color: ${({ theme }) => theme.colors.primary.main.color};
+  color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.main.contrast};
 `;
 export const EmailIcon = styled(Email)`
   width: 30px;
@@ -38,7 +39,7 @@ export const EmailIcon = styled(Email)`
       right: 7% ;
     `,
   })}
-  color: ${({ theme }) => theme.colors.primary.main.color};
+  color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.main.contrast};
 `;
 export const MessageIcon = styled(Message)`
   width: 30px;
@@ -53,6 +54,6 @@ export const MessageIcon = styled(Message)`
       right: 7% ;
     `,
   })}
-  color: ${({ theme }) => theme.colors.primary.main.color};
+  color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.main.contrast};
 `;
 /* ---------Styled Icons--------------- */

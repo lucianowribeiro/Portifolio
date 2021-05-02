@@ -3,15 +3,16 @@ import React from 'react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import lodash from 'lodash';
 
 const LinkStyle = styled.a`
   & {
-    color: ${({ theme }) => theme.colors.primary.main.color};
+    color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.main.contrast};
     text-underline-position: under;
   }
   &:hover {
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.primary.main.contrast};
+    color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.main.color};
     transition: ${({ theme }) => theme.transition};
   }
 `;

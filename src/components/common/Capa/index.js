@@ -1,21 +1,20 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import lodash from 'lodash';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import Text from '../../foundation/Text';
+import { WebPageContext } from '../../wrappers/WebPage';
 
 const CapaStyle = styled.section`
   display: flex;
   width: 100%;
   margin-bottom: 30px;
-  background-image: url("./images/4401280.jpg");
-  background-repeat: no-repeat; 
   & > h1,
   & > h2 {
     margin: 2px;
-    color: #2b3d44;
-    text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white,
-      0px -1px 0px white;
+    color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.text.color};
+    text-shadow: 1px 0px 0px ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.main.color};
   }
   ${breakpointsMedia({
     xs: css`
@@ -23,25 +22,42 @@ const CapaStyle = styled.section`
       flex-direction: column;
       justify-content: flex-end;
       align-items: center;
-      background-position: top;
-      background-size: 90%; 
     `,
     md: css`
       height: 40vh;
+      flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
-      background-position: right;
-      background-size: 65%; 
       & > h1,
       & > h2 {
         margin-left: 15%;
+        align-self: flex-start;
       }
     `,
   })}
 `;
+CapaStyle.Img = styled.div`
+  background-image: url("./images/CapaSIte.png");
+  background-repeat: no-repeat; 
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  ${breakpointsMedia({
+    xs: css`
+      background-position: top;
+      background-size: 90%; 
+    `,
+    md: css`
+      background-position: right;
+      background-size: 85%;  
+      align-self: flex-end;
+    `,
+  })}
+`;
 export default function Capa() {
+  const webPage = React.useContext(WebPageContext);
   return (
-    <CapaStyle>
+    <CapaStyle mode={webPage.themeMode}>
+      <CapaStyle.Img />
       <Text tag="h1" mobile="titleXS" desktop="titleMD">
         Luciano Weber Ribeiro
       </Text>
@@ -51,7 +67,3 @@ export default function Capa() {
     </CapaStyle>
   );
 }
-
-CapaStyle.propTypes = {
-  children: PropTypes.node,
-};
