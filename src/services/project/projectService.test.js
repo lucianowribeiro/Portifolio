@@ -44,7 +44,7 @@ describe('projectService', () => {
           expect(CMSGraphCLientModule).toHaveBeenCalledWith(query);
           expect(response).toEqual(projects);
         });
-        /* test('returning the unique project', async () => {
+        test.only('returning the unique project', async () => {
           //
           const query = `
           query{
@@ -69,7 +69,7 @@ describe('projectService', () => {
           };
           const CMSGraphCLientModule = jest.fn(async () => ({
             projectItem: {
-              projectTitle: string,
+              projectTitle: 'coisos',
               projectImage: {},
               projectDescription: string,
               projectUrl: string,
@@ -83,7 +83,7 @@ describe('projectService', () => {
           console.log(response);
           expect(CMSGraphCLientModule).toHaveBeenCalledWith(query);
           expect(response).toEqual(projects);
-        }); */
+        });
       });
       describe('and fails', () => {
         test('returning the message error', async () => {

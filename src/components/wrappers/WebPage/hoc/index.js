@@ -6,11 +6,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WebPage from '..';
 import WebGlobalProvider from '../provider';
+import theme from '../../../../theme';
 
 export default function webPageHOC(PageComponent, { pageProps } = { pageProps: {} }) {
   return (props) => (
-    <WebGlobalProvider>
+    <WebGlobalProvider theme={theme}>
       <WebPage
+        theme={theme}
         {...pageProps}
         {...props.pageProps}
       >

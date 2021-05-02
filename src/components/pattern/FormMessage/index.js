@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
+import lodash from 'lodash';
 import Text from '../../foundation/Text';
 import TextField from '../../input/Textfield';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
@@ -13,14 +14,15 @@ import {
 } from './icons';
 import Button from '../../foundation/Button';
 import Result from './Result';
+import { WebPageContext } from '../../wrappers/WebPage';
 
 const FormMessageWrapper = styled.section`
-  width: 92%;
-  height: 95%;
+  width: 95%;
+  height: 92%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  align-items: center;  
 `;
 FormMessageWrapper.Title = styled.div`
   width: 92%;
@@ -28,6 +30,9 @@ FormMessageWrapper.Title = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  & h2 {
+    color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.main.contrast};
+  }
 `;
 FormMessageWrapper.Content = styled.div`
   width: 92%;
@@ -82,6 +87,7 @@ export default function FormMessage({
   function handleBlur(event) {
     if (event.target.textLength <= 0) { setFieldEmpty(true); }
   }
+  const webPage = React.useContext(WebPageContext);
   return (
     <motion.div /* framer motion */
       {...propsModal}
@@ -108,13 +114,13 @@ export default function FormMessage({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: `${webPage.themeMode === 'light' ? '#fff' : '#1e3238'}`,
         boxShadow: '3px 2px 5px #009688',
         borderRadius: '3%',
       }}
     >
       <FormMessageWrapper>
-        <FormMessageWrapper.Title>
+        <FormMessageWrapper.Title mode={webPage.themeMode}>
           <Text tag="h2" mobile="subTitleXS" desktop="subTitleMD">
             {!isFormSubmited
               && 'Send your message'}
@@ -128,7 +134,7 @@ export default function FormMessage({
               && submissionStatus === formStatus.DONE
               && 'Congratulations :)'}
           </Text>
-          <CloseIcon onClick={onClose} />
+          <CloseIcon mode={webPage.themeMode} onClick={onClose} />
         </FormMessageWrapper.Title>
         {!isFormSubmited && (
           <FormMessageWrapper.Content>
@@ -168,8 +174,9 @@ export default function FormMessage({
                 }, 2000);
               }}
             >
-              <UserIcon />
+              <UserIcon mode={webPage.themeMode} />
               <TextField
+                mode={webPage.themeMode}
                 tag="input"
                 type="text"
                 mobile="paragraphXS"
@@ -181,8 +188,9 @@ export default function FormMessage({
                 placeholder="Name"
                 required
               />
-              <EmailIcon />
+              <EmailIcon mode={webPage.themeMode} />
               <TextField
+                mode={webPage.themeMode}
                 tag="input"
                 type="email"
                 mobile="paragraphXS"
@@ -194,8 +202,9 @@ export default function FormMessage({
                 placeholder="Email"
                 required
               />
-              <MessageIcon />
+              <MessageIcon mode={webPage.themeMode} />
               <TextField
+                mode={webPage.themeMode}
                 tag="textarea"
                 mobile="paragraphXS"
                 desktop="paragraphMD"
@@ -207,7 +216,7 @@ export default function FormMessage({
                 placeholder="Type your message here ..."
                 required
               />
-              <Button disabled={isFieldEmpty}>Send</Button>
+              <Button mode={webPage.themeMode} disabled={isFieldEmpty}>Send</Button>
             </form>
           </FormMessageWrapper.Content>
         )}

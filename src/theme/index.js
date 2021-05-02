@@ -1,6 +1,35 @@
 import typographyVariants from './typographyVariants';
 
-const colors = {
+const dark = {
+  background: {
+    main: {
+      color: '#1e3238',
+    },
+  },
+  borders: {
+    main: {
+      color: 'rgba(0, 150, 136,.7)',
+    },
+  },
+  primary: {
+    text: {
+      color: '#fff',
+    },
+    main: {
+      color: '#00bdab',
+      contrast: '#a6f8d3',
+    },
+  },
+  secondary: {
+    main: {
+      color: 'rgba(0,189,171,0.2)',
+    },
+    button: {
+      color: 'rgba(255,255,255,0.1)',
+    },
+  },
+};
+const light = {
   background: {
     main: {
       color: '#fff',
@@ -16,8 +45,16 @@ const colors = {
       color: '#000',
     },
     main: {
-      color: '#35474e',
-      contrast: '#009688',
+      color: '#009688',
+      contrast: '#35474e',
+    },
+  },
+  secondary: {
+    main: {
+      color: 'rgba(0,150,136,0.4)',
+    },
+    button: {
+      color: 'rgba(0,0,0,0.1)',
     },
   },
 };
@@ -31,7 +68,8 @@ const borderRadius = {
   card: '5%',
 };
 export default {
-  colors,
+  light,
+  dark,
   typographyVariants,
   breakpoints,
   fontFamily: "'Truculenta', sans-serif",

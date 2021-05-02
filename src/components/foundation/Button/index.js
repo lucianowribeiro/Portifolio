@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import lodash from 'lodash';
 import Text from '../Text';
 import SendIcon from './icons';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
@@ -30,34 +31,34 @@ const ButtonWrapper = styled.button`
     `,
   })}
   & span{
-    color: ${({ theme }) => theme.colors.primary.main.color}; 
+    color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.main.contrast};
   }
   &:hover,&:active{
-    background-color: rgba(0, 150, 136, 0.8);
+    background-color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.main.color};
     & span,& path {
-      color: white;
+      color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).background.main.color};
     }
     transition: ${({ theme }) => theme.transition};
   }
   &:disabled{
-    background-color: rgba(0,0,0,0.1);
+    background-color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).secondary.button.color};
     & span ,& path {
-      color: initial;
+      color: ${({ theme, mode }) => lodash.get(theme, `${mode}`).primary.text.color}
     }
     cursor: not-allowed;
   }
 `;
 
 export default function Button({
-  children, onClick, disabled,
+  children, onClick, disabled, mode,
 }) {
   return (
-    <ButtonWrapper type="submit" onClick={onClick} disabled={disabled}>
+    <ButtonWrapper mode={mode} type="submit" onClick={onClick} disabled={disabled}>
       <Text tag="span" mobile="paragraphXS" desktop="paragraphMD">
         {children}
       </Text>
       {' '}
-      <SendIcon />
+      <SendIcon mode={mode} />
     </ButtonWrapper>
   );
 }
